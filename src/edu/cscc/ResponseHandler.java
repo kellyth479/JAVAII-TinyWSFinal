@@ -11,13 +11,13 @@ public class ResponseHandler {
             "HTTP/1.0 404 NotFound\n" +
                     "Server: TinyWS\n" +
                     "Content-type: text/plain\n\n" +
-                    "Requested file not found.";
+                    "404 - Requested file not found.";
 
     private static final String FORBIDDEN_RESPONSE =
             "HTTP/1.0 403 Forbidden\n" +
                     "Server: TinyWS\n" +
                     "Content-type: text/plain\n\n" +
-                    "Requested action is forbidden.  So there!";
+                    "403 - Requested action is forbidden.  So there!";
 
     private static final String HTTP_OK_HEADER =
             "HTTP/1.0 200 OK\n" +
@@ -125,7 +125,7 @@ public class ResponseHandler {
         System.out.println("### Get file path = " + path );
         config.dumpProperties();
 
-        if(!f.canRead() || (f.length() == 0) ) {
+        if(!f.canRead() || (f.length() == 0)) {
 
             // dwpl huh
 

@@ -93,12 +93,12 @@ public class Config {
             System.out.println(key + ": " + value);
         }
 
-        System.out.println("FACEFACEFACEFACE");
+        System.out.println("DUMPING PROPERTIES:");
         String port = properties.getProperty(PORT);
         String folder = properties.getProperty(DEFAULTFOLDER);
         String page = properties.getProperty(DEFAULTPAGE);
-        System.out.println(PORT + ": " + port);
-        System.out.println(DEFAULTFOLDER + ": " + folder);
-        System.out.println(DEFAULTPAGE + ": " + page);
+        System.out.println(PORT.toUpperCase() + ": " + port);
+        System.out.println(DEFAULTFOLDER.toUpperCase() + ": " + folder);
+        System.out.println(DEFAULTPAGE.toUpperCase() + ": " + page);
     }
 }
