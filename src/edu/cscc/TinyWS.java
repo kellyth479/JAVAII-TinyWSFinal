@@ -8,7 +8,7 @@ import edu.cscc.RequestHandler;
 
 /**
  * TinyWS a simplistic Tiny Web Server
- * @author student name here
+ * @author Tyler Warren and Tom Kelly
  */
 public class TinyWS {
 

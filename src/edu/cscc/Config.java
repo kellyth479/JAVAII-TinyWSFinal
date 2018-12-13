@@ -41,11 +41,7 @@ public class Config {
     public void readProperties() throws IOException {
         // TODO code here
         try{
-            System.out.println("Working Directory = " +
-                    System.getProperty("user.dir"));
             File file = new File(CONFIG_FILE);
-            System.out.print("CONFIG_FILE: ");
-            System.out.println(CONFIG_FILE);
             if(!file.exists()){
                 System.out.println("FILE DOES NOT EXIST!");
             }else {
@@ -58,13 +54,8 @@ public class Config {
             System.out.println("File Not Found in readProperties: ");
             TinyWS.fatalError(e);
         }catch(IOException e){
-//            e.printStackTrace();
             TinyWS.fatalError(e);
         }
-//        catch(NullPointerException e){
-//            e.printStackTrace();
-//        }
-
     }
 
 
@@ -90,7 +81,6 @@ public class Config {
         while(enuKeys.hasMoreElements()){
             String key = (String) enuKeys.nextElement();
             String value = properties.getProperty(key);
-            System.out.println(key + ": " + value);
         }
 
         System.out.println("DUMPING PROPERTIES:");

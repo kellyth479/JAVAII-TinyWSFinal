@@ -46,18 +46,15 @@ public class HTTPRequest {
          if(split.length < 2){
 
              TinyWS.fatalError("Incorrect number of HTTP Request Tokens: " + r);
-//             return false;
          }
 
          if(!"GET".equals(split[0].toUpperCase())){
 
              TinyWS.fatalError("HTTP Request does not begin with GET: " + r);
-//             return false;
          }
 
          if("".equals(split[1]) || split[1] == null){
              TinyWS.fatalError("Second HTTP Request Token missing or NULL: " + r);
-//             return false;
          }else{
              this.path = split[1];
          }

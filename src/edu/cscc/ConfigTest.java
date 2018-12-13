@@ -10,18 +10,8 @@ import static org.junit.Assert.*;
 
 public class ConfigTest {
 
-//    @Before public void setUp(){
-//        //Test One
-//        Config config1 = new Config();
-//        try{
-//            config1.readProperties();
-//        }catch(IOException e){
-//            e.printStackTrace();
-//        }
-//    }
-
     /**
-     * test that the object can read the properties
+     * test that the object be craeted properly
      */
     @Test public void test1(){
         Config config1 = new Config();
@@ -30,6 +20,8 @@ public class ConfigTest {
         }catch(IOException e){
             e.printStackTrace();
         }
+
+        assertFalse("Object not created", config1 == null);
     }
 
     @Test public void test2(){
@@ -40,11 +32,13 @@ public class ConfigTest {
             e.printStackTrace();
         }
         String port = config1.getProperty(config1.PORT);
-        System.out.println("PORT: " + port);
-        String defaultpage = config1.getProperty(config1.DEFAULTPAGE);
-        System.out.println("DEFAULTPAGE: " + defaultpage);
-        String defaultfolder = config1.getProperty(config1.DEFAULTFOLDER);
-        System.out.println("DEFAULTFOLDER: " + defaultfolder);
+        String defaultPage = config1.getProperty(config1.DEFAULTPAGE);
+        String defaultFolder = config1.getProperty(config1.DEFAULTFOLDER);
+
+        assertTrue("Port is incorrect", "80".equals(port));
+        assertTrue("Default Page is incorrect","index.html".equals(defaultPage));
+        assertTrue("Default Folder is incorrect","./html".equals(defaultFolder));
+
     }
 
 
