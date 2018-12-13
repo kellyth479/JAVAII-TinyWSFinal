@@ -1,13 +1,13 @@
 package edu.cscc;
-import org.junit.Before;
 import org.junit.Test;
-
 import java.io.IOException;
-
 import static org.junit.Assert.*;
 
 //Arrange Act Assert
 
+/**
+ * Config Test creates tests to validate that the config class is reading the config.xml file properly.
+ */
 public class ConfigTest {
 
     /**

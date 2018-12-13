@@ -1,8 +1,10 @@
 package edu.cscc;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
+/**
+ * HTTPRequestTest validates the the HTTPRequest class is properly validating the syntax of the request
+ */
 public class HTTPRequestTest {
 
     @Test public void HTTPRequestTest1(){
