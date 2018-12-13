@@ -62,28 +62,30 @@ public class ResponseHandler {
                     out.write(byteResp);
                     out.flush();
                     out.close();
-                }if(responseCode == 404){
+                }
+                if(responseCode == 404){
                     byte[] byteResp = NOT_FOUND_RESPONSE.getBytes();
                     out.write(byteResp);
                     out.flush();
                     out.close();
-
                 }
-//                out.write(response);
-//                out.flush();
-//                out.close();
+            } else {
+
+                out.write(response);
+                out.flush();
+                out.close();
             }
 
-        }else{
-            byte[] byteResp = FORBIDDEN_RESPONSE.getBytes();
-
-
-            out.write(byteResp);
-            out.flush();
-            out.close();
         }
 
 
+
+        byte[] byteResp = FORBIDDEN_RESPONSE.getBytes();
+
+
+        out.write(byteResp);
+        out.flush();
+        out.close();
 
 //        i.	If the HTTPRequest is a valid request call the private getFile() method you’ve implemented to get the byte array.
 //        ii.	If the response is null (either it returned null or getFile() was never called because the request is invalid), test the return code. If it’s 403 set the response to FORBIDDEN_RESPONSE, otherwise set it to NOT_FOUND_RESPONSE. You’ll need to use the built-in String getBytes() method to convert a String to a byte array.
