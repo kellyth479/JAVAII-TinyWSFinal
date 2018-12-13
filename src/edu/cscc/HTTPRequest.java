@@ -1,7 +1,7 @@
 package edu.cscc;
 /**
  * Process HTTPRequest
- * @author Thomas Kelly
+ * @author Thomas Kelly - Tyler Warren
  * the HTTPRequest class accepts an HTTP request from a web browser and extracts the relevant path of the file to be returned to the web browser
  * Uses the error handling found in the tinyWS Class
  */

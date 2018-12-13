@@ -6,6 +6,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+/**
+ * @author Thomas Kelly - Tyler Warren
+ */
 public class ResponseHandler {
     private static final String NOT_FOUND_RESPONSE =
             "HTTP/1.0 404 NotFound\n" +
@@ -95,6 +98,12 @@ public class ResponseHandler {
     }
 
     // Find requested file, assume Document Root is in html folder in project directory
+
+    /**
+     *
+     * @param path
+     * @return byte array
+     */
     private byte[] getFile(String path) {
 
         // dwpl how to return when checks fail, etc.
@@ -179,6 +188,12 @@ public class ResponseHandler {
         return(combinedBytes);
     }
 
+    /**
+     *
+     * @param f
+     * @return byte array of the parsed file
+     * reads the file passed in and returns it in a byte array
+     */
     // Read file, return byte array (null if error)
     private byte[] readFile(File f)  {
 
@@ -195,6 +210,12 @@ public class ResponseHandler {
         return(array);
     }
 
+    /**
+     *
+     * @param path
+     * @return String representing the MIME Type
+     * Parses the MimeType from the path
+     */
     // Return mimetype based on file suffix (or null if error)
     private String getMimeType(String path) {
         String mimeType = null;

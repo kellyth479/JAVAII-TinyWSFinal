@@ -8,23 +8,36 @@ import edu.cscc.RequestHandler;
 
 /**
  * TinyWS a simplistic Tiny Web Server
- * @author Tyler Warren and Tom Kelly
+ * @author Thomas Kelly - Tyler Warren
  */
+
+
 public class TinyWS {
 
     private static int port;
     private static String defaultFolder;
     private static String defaultPage;
 
+    /**
+     The main class instantiates a TinyWS object
+     */
     public static void main(String[] args) throws IOException{
         TinyWS tiny = new TinyWS();
         tiny.listen();
     }
 
+    /**
+     Gets the port number
+     */
+
     public TinyWS() throws IOException{
        Config config = new Config();
        port = Integer.parseInt(config.getProperty(Config.PORT));
     }
+
+    /**
+     Gets the source of the HTTP request from the port found. Doesn't run until a port number is received.
+     */
 
     public void listen() throws IOException {
 

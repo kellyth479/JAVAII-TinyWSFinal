@@ -7,13 +7,24 @@ import java.net.SocketException;
 import edu.cscc.HTTPRequest;
 import edu.cscc.ResponseHandler;
 
+/**
+ * @author Thomas Kelly - Tyler Warren
+ * RequestHandler class processes the request made, manipulates the data, and returns a response.
+ */
 public class RequestHandler {
 
     private Socket connection;
 
+    /**
+     * Establishes a socket connection.
+     */
     public RequestHandler(Socket connection) throws SocketException, IOException{
         this.connection = connection;
     }
+
+    /**
+     * Processes received HTTP requests
+     */
 
     public void processRequest() {
         try {
@@ -36,6 +47,10 @@ public class RequestHandler {
         }
 
     }
+
+    /**
+     *Reads a HTTP request from the socket and returns it as a string
+     */
 
     private String readRequest() throws SocketException, IOException {
         // Set socket timeout to 500 milliseconds

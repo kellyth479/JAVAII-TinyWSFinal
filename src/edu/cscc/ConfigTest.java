@@ -3,10 +3,12 @@ import org.junit.Test;
 import java.io.IOException;
 import static org.junit.Assert.*;
 
-//Arrange Act Assert
+
 
 /**
+ * @author Thomas Kelly - Tyler Warren
  * Config Test creates tests to validate that the config class is reading the config.xml file properly.
+ * Arrange Act Assert
  */
 public class ConfigTest {
 

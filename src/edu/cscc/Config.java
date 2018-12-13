@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.io.File;
 /**
  * Process webserver configuration
- * @author Thomas Kelly
+ * @author Thomas Kelly - Tyler Warren
  * Config class parses the Config file located at ./TinyWS.xml
  * Provides the port, default page and default folder in the config file via parsing the xml using the Properties loadXML(File) method
  * Will also dump these properties to the screen
