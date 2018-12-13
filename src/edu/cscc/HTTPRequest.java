@@ -11,7 +11,6 @@ public class HTTPRequest {
     private boolean validRequest;   // is request valid?
 
     public HTTPRequest(String r) {
-        // TODO Constructor
         this.request = r;
         this.validRequest = parse(r);
     }
@@ -38,8 +37,6 @@ public class HTTPRequest {
      */
     // TODO uncomment
      private boolean parse(String r) {
-          //TODO code here
-
          String[] split = r.split("\\s+");
 
          if(split.length < 2){

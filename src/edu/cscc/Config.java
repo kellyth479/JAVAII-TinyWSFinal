@@ -27,7 +27,6 @@ public class Config {
     private static Properties properties;
 
     public Config() {
-        // TODO code here
         this.properties = new Properties();
         try{
             readProperties();
@@ -43,7 +42,6 @@ public class Config {
      * @throws IOException
      */
     public void readProperties() throws IOException {
-        // TODO code here
         try{
             File file = new File(CONFIG_FILE);
             if(!file.exists()){
@@ -80,7 +78,6 @@ public class Config {
      *  Uses Enumeration as well as using the getProperty function
      */
     public void dumpProperties() {
-        // TODO code here
         Enumeration enuKeys = properties.keys();
         while(enuKeys.hasMoreElements()){
             String key = (String) enuKeys.nextElement();
