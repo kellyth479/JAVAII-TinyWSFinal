@@ -50,32 +50,40 @@ public class ResponseHandler {
             System.out.println("####path = " + request.getPath());
 
             response = getFile(request.getPath());
+            System.out.println("##############################");
+            System.out.println("ResponseCode in sendResponse: " + responseCode);
 
             if(response == null) {
                 if(responseCode == 403 ) {
-
+                    System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                     byte[] byteResp = FORBIDDEN_RESPONSE.getBytes();
 
 
                     out.write(byteResp);
                     out.flush();
                     out.close();
-                }
-            } else {
+                }if(responseCode == 404){
+                    byte[] byteResp = NOT_FOUND_RESPONSE.getBytes();
+                    out.write(byteResp);
+                    out.flush();
+                    out.close();
 
-                out.write(response);
-                out.flush();
-                out.close();
+                }
+//                out.write(response);
+//                out.flush();
+//                out.close();
             }
 
+        }else{
+            byte[] byteResp = FORBIDDEN_RESPONSE.getBytes();
+
+
+            out.write(byteResp);
+            out.flush();
+            out.close();
         }
 
-        byte[] byteResp = FORBIDDEN_RESPONSE.getBytes();
 
-
-        out.write(byteResp);
-        out.flush();
-        out.close();
 
 //        i.	If the HTTPRequest is a valid request call the private getFile() method you’ve implemented to get the byte array.
 //        ii.	If the response is null (either it returned null or getFile() was never called because the request is invalid), test the return code. If it’s 403 set the response to FORBIDDEN_RESPONSE, otherwise set it to NOT_FOUND_RESPONSE. You’ll need to use the built-in String getBytes() method to convert a String to a byte array.
@@ -103,6 +111,8 @@ public class ResponseHandler {
             responseCode = 403;
         }
 
+
+
         if(path.startsWith(File.separator)) {
             path = config.getProperty(Config.DEFAULTFOLDER) + path;
         } else {
@@ -128,8 +138,11 @@ public class ResponseHandler {
         if(!f.canRead() || (f.length() == 0)) {
 
             // dwpl huh
-
+            System.out.println("HERE WE ARE #########");
             responseCode = 404;
+            System.out.println("##############################");
+            System.out.println("ResponseCode in getFile: " + responseCode);
+            return null;
         }
 
 
@@ -168,10 +181,6 @@ public class ResponseHandler {
     private byte[] readFile(File f)  {
 
         byte[] array = null;
-
-//        if(){
-//
-//        }
 
         try {
             array = Files.readAllBytes(f.toPath());
