@@ -8,8 +8,8 @@ import edu.cscc.HTTPRequest;
 import edu.cscc.ResponseHandler;
 
 /**
- * @author Thomas Kelly - Tyler Warren
  * RequestHandler class processes the request made, manipulates the data, and returns a response.
+ * @author Thomas Kelly - Tyler Warren
  */
 public class RequestHandler {
 

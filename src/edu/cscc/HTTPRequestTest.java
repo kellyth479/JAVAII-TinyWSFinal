@@ -3,8 +3,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- * @author Thomas Kelly - Tyler Warren
  * HTTPRequestTest validates the the HTTPRequest class is properly validating the syntax of the request
+ * @author Thomas Kelly - Tyler Warren
  */
 public class HTTPRequestTest {
 

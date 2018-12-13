@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 /**
+ * Determines the proper response based on the request received from the web browser
  * @author Thomas Kelly - Tyler Warren
  */
 public class ResponseHandler {
@@ -37,11 +38,12 @@ public class ResponseHandler {
     }
 
     /**
-     * Send HTTP Response
+     * Uses the getFile method to determine which response to send to the browser
+     * @param connection connection socket
+     * @throws IOException
      */
     public void sendResponse(Socket connection) throws IOException {
 
-        System.out.println("Entered sendResponse()");
         byte[] response = null;
         int sendbufsize = connection.getSendBufferSize();
         BufferedOutputStream out = new BufferedOutputStream(
@@ -50,17 +52,12 @@ public class ResponseHandler {
 
 
         if(request.isValidRequest()) {
-            System.out.println("####path = " + request.getPath());
 
             response = getFile(request.getPath());
-            System.out.println("##############################");
-            System.out.println("ResponseCode in sendResponse: " + responseCode);
 
             if(response == null) {
                 if(responseCode == 403 ) {
-                    System.out.println("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
                     byte[] byteResp = FORBIDDEN_RESPONSE.getBytes();
-
 
                     out.write(byteResp);
                     out.flush();
@@ -73,7 +70,6 @@ public class ResponseHandler {
                     out.close();
                 }
             } else {
-
                 out.write(response);
                 out.flush();
                 out.close();
@@ -81,11 +77,7 @@ public class ResponseHandler {
 
         }
 
-
-
         byte[] byteResp = FORBIDDEN_RESPONSE.getBytes();
-
-
         out.write(byteResp);
         out.flush();
         out.close();
@@ -100,13 +92,11 @@ public class ResponseHandler {
     // Find requested file, assume Document Root is in html folder in project directory
 
     /**
-     *
-     * @param path
+     * Reads a file using the String path and returns a byte array. This method calls readFile method, sets the appropriate response code
+     * @param path location on the file to be retrieved
      * @return byte array
      */
     private byte[] getFile(String path) {
-
-        // dwpl how to return when checks fail, etc.
 
         Config config = new Config();
 
@@ -121,8 +111,6 @@ public class ResponseHandler {
         if(path.contains("..")) {
             responseCode = 403;
         }
-
-
 
         if(path.startsWith(File.separator)) {
             path = config.getProperty(Config.DEFAULTFOLDER) + path;
@@ -139,27 +127,15 @@ public class ResponseHandler {
                 path = path + File.separator + config.getProperty(Config.DEFAULTPAGE);
             }
 
-            // dwpl update path
             f = new File(path);
 
         }
-        System.out.println("### Get file path = " + path );
-        config.dumpProperties();
 
         if(!f.canRead() || (f.length() == 0)) {
 
-            // dwpl huh
-            System.out.println("HERE WE ARE #########");
             responseCode = 404;
-            System.out.println("##############################");
-            System.out.println("ResponseCode in getFile: " + responseCode);
             return null;
         }
-
-
-
-
-
 
         byteArray = readFile(f);
 
@@ -171,10 +147,7 @@ public class ResponseHandler {
             return null;
         }
 
-
         String httpHeaders = HTTP_OK_HEADER +  getMimeType(path)   + "\n\n";
-
-
 
         byte[] headerBytes = httpHeaders.getBytes(StandardCharsets.UTF_8);
 
@@ -183,16 +156,13 @@ public class ResponseHandler {
         System.arraycopy(headerBytes,0,combinedBytes,0         ,headerBytes.length);
         System.arraycopy(byteArray,0,combinedBytes, headerBytes.length, byteArray.length);
 
-
-
         return(combinedBytes);
     }
 
     /**
-     *
-     * @param f
+     *Reads the file passed in and returns it in a byte array
+     * @param f File to be read into a byte array
      * @return byte array of the parsed file
-     * reads the file passed in and returns it in a byte array
      */
     // Read file, return byte array (null if error)
     private byte[] readFile(File f)  {
@@ -211,10 +181,9 @@ public class ResponseHandler {
     }
 
     /**
-     *
-     * @param path
-     * @return String representing the MIME Type
      * Parses the MimeType from the path
+     * @param path location of the file to be parsed for its MIME type
+     * @return String representing the MIME Type
      */
     // Return mimetype based on file suffix (or null if error)
     private String getMimeType(String path) {

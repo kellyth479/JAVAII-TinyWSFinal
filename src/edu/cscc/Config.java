@@ -13,6 +13,11 @@ import java.io.File;
  * Provides the port, default page and default folder in the config file via parsing the xml using the Properties loadXML(File) method
  * Will also dump these properties to the screen
  */
+
+/**
+ * Config class parses the config.xml file and provides the port, default page and default folder for the TinyWS webserver
+ */
+
 public class Config {
     public static final String PORT = "port";
     public static final String DEFAULTPAGE = "defaultPage";
@@ -34,9 +39,8 @@ public class Config {
     }
 
     /**
-     *public void readProperties()
+     *public void readProperties() - Opens this.CONFIG_FILE and parses the contents into its properties data element
      * @throws IOException
-     * Opens this.CONFIG_FILE and parses the contents into its properties data element
      */
     public void readProperties() throws IOException {
         // TODO code here
@@ -63,7 +67,7 @@ public class Config {
     //What does this return if something other than one of these keys is passed in?
     /**
      *public String getProperty(String key)
-     * @param key
+     * @param key The string key to look up the property.
      * @return The string value of either the port, default page or default folder
      */
     public String getProperty(String key) {

@@ -6,8 +6,8 @@ import static org.junit.Assert.*;
 
 
 /**
- * @author Thomas Kelly - Tyler Warren
  * Config Test creates tests to validate that the config class is reading the config.xml file properly.
+ * @author Thomas Kelly - Tyler Warren
  * Arrange Act Assert
  */
 public class ConfigTest {
